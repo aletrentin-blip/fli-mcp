@@ -1034,16 +1034,16 @@ def run_http(host: str = "0.0.0.0", port: int = 8000) -> None:
     
     bind_port = int(env_port) if env_port else port
 
-   from starlette.middleware.cors import CORSMiddleware
-app = mcp.http_app()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-import uvicorn
-uvicorn.run(app, host=bind_host, port=bind_port)
+    from starlette.middleware.cors import CORSMiddleware
+    import uvicorn
+    app = mcp.http_app()
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    uvicorn.run(app, host=bind_host, port=bind_port)
 
 
 if __name__ == "__main__":
